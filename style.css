@@ -1,0 +1,106 @@
+:root {
+    --bg-color: #ffffff;
+    --text-main: #1a1a1a;
+    --col-1: #dbeafe; /* Blue */
+    --col-2: #fef3c7; /* Amber */
+    --col-3: #dcfce7; /* Green */
+    --col-4: #fce7f3; /* Pink */
+    --col-5: #f3e8ff; /* Purple */
+}
+
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and IE 11 */
+    user-select: none;         /* Standard syntax */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header { margin-bottom: 50px; }
+h1 { font-weight: 300; font-size: 2.5rem; margin-bottom: 10px; }
+p { color: #666; }
+
+#word-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    min-height: 200px;
+}
+
+/* Paragraph Wrapper */
+.paragraph-block {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    gap: 10px;
+}
+
+.word-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.word-item {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.word-item:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+/* Tooltip Style */
+.infobox {
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #2d3436;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.infobox::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #2d3436 transparent transparent transparent;
+}
+
+.word-wrapper:hover .infobox {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.date-label { display: block; font-weight: bold; }
+.count-label { color: #ccc; font-size: 0.75rem; }
