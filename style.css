@@ -12,7 +12,7 @@ body {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none;     /* IE 10 and IE 11 */
     user-select: none;         /* Standard syntax */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
@@ -104,3 +104,10 @@ p { color: #666; }
 
 .date-label { display: block; font-weight: bold; }
 .count-label { color: #ccc; font-size: 0.75rem; }
+
+.word-wrapper.active .infobox {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    z-index: 100; /* Ensure it stays on top of other words */
+}

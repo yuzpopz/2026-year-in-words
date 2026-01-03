@@ -29,7 +29,7 @@
     const container = document.getElementById('word-container');
     const errorMsg = document.getElementById('error-msg');
     
-    if (paragraphs.length === 0) {
+    if (!paragraphs || paragraphs.length === 0) {
         errorMsg.textContent = "Error: No text found.";
         return;
     } else {
@@ -75,6 +75,23 @@
             const wrapper = document.createElement('div');
             wrapper.className = 'word-wrapper';
 
+            // MOBILE OPTIMIZATION: Toggle 'active' class on tap
+            wrapper.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevents the document listener from firing immediately
+                
+                const isActive = this.classList.contains('active');
+                
+                // Clear all other active tooltips first
+                document.querySelectorAll('.word-wrapper.active').forEach(el => {
+                    el.classList.remove('active');
+                });
+
+                // If it wasn't active, make it active now
+                if (!isActive) {
+                    this.classList.add('active');
+                }
+            });
+
             const span = document.createElement('span');
             span.className = 'word-item';
             span.style.backgroundColor = color;
@@ -101,5 +118,12 @@
         });
 
         container.appendChild(paraDiv);
+    });
+
+    // Close any open tooltips when tapping anywhere else on the screen
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.word-wrapper.active').forEach(el => {
+            el.classList.remove('active');
+        });
     });
 })();
