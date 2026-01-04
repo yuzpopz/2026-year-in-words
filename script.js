@@ -1,3 +1,11 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker registered!'))
+      .catch(err => console.log('Service Worker registration failed:', err));
+  });
+}
+
 (function() {
     const rawScript = `
     There is something quite powerful about the decision to begin, as you never know exactly where that beginning will lead. 

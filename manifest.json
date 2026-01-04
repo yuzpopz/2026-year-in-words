@@ -1,7 +1,9 @@
 {
   "name": "Word a Day",
   "short_name": "Word a Day",
+  "start_url": "./index.html",
   "display": "standalone",
+  "scope": "./",
   "icons": [
     {
       "src": "images/icon192.png",
